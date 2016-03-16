@@ -1,0 +1,118 @@
+<div class="container">
+     
+       <div class="row">
+        <div class="col-sm-6" >
+          
+        <!-- userId title -->
+          <form ng-submit="mainVar.submitOrder1()">
+
+             <div class="form-group">
+              <label for="userID">userID</label>
+              <input type="userID" required  class="form-control" id="userID" placeholder="userID" ng-model="mainVar.newOrder2.userID">
+            </div>
+           
+           
+
+            
+            <button  type="submitOrder" class="btn btn-primary">Get All Order List</button>
+           
+          </form>
+        </div>
+        <div class="row">
+        <div class="col-sm-6" >
+          
+        <!-- userId title -->
+          <form ng-submit="mainVar.submitCancel()">
+
+             <div class="form-group">
+              <label for="userID">userID</label>
+              <input type="userID" required  class="form-control" id="userID" placeholder="userID" ng-model="mainVar.newOrder3.userID">
+            </div>
+           
+           
+
+            
+            <button  type="submitOrder" class="btn btn-primary">Cancel All my Orders</button>
+           
+          </form>
+        </div>
+        
+
+        <div class="col-sm-6" >
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>userID</th>
+                <th>OrderID</th>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="user in mainVar.OrderList2">
+                <td>{{user.userID}}</td>
+                <td>{{user.orderID}}</td>
+                <td>{{user.title}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-sm-6" >
+          
+        <!-- userId title -->
+          <form ng-submit="mainVar.submitOrder()">
+
+             <div class="form-group">
+              <label for="userID">userID</label>
+              <input type="userID" required  class="form-control" id="userID" placeholder="userID" ng-model="mainVar.newOrder.userID">
+            </div>
+            
+           <div class="form-group">
+              <label for="Title">Title</label>
+              <input type="Title" required class="form-control" id="Title" placeholder="Title" ng-model="mainVar.newOrder.title">
+            </div>
+           
+
+            <button  type="submitOrder" class="btn btn-primary">Add Order</button>
+            
+           
+          </form>
+        </div>
+
+          <div class="col-sm-6" >
+          <table class="table table-striped">
+            <thead>
+              <tr>
+
+                
+                <th>Genre</th>
+                
+                <th>Poster</th>
+                
+                <th>Title</th>
+                
+                
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="user in mainVar.movies | filter:mainVar.search | orderBy:'name'">
+               
+               
+                 <td>{{user.list_Genre}}</td>
+               
+                
+                 <td><img class="img-responsive" src="{{user.list_Poster}}"></td>
+               
+                 <td>{{user.list_Title}}</td>
+                
+                
+                 
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,70 @@
+<div class="container">
+      <div class="row">
+        
+          <input type="search" ng-model="mainVar.search" class="form-control" id="name" placeholder="Search">
+        
+        
+        
+
+        <div class="col-sm-6" >
+          <table class="table table-striped">
+            <thead>
+              <tr>
+
+                <th>Poster</th>
+                <th>Actors</th>
+                <th>Awards</th>
+                <th>Country</th>
+                <th>Director</th>
+                <th>Genre</th>
+                <th>Language</th>
+                <th>Metascore</th>
+                <th>Plot</th>
+                
+                <th>Rated</th>
+                <th>Released</th>
+                <th>Runtime</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Writer</th>
+                <th>Year</th>
+                <th>imdbID</th>
+                <th>imdbRating</th>
+                <th>imdbVotes</th>
+                
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="user in mainVar.movies | filter:mainVar.search | orderBy:'name'">
+               
+               <td><img class="img-responsive" src="{{user.list_Poster}}"></td>
+                <td>{{user.list_Actors}}</td>
+                <td>{{user.list_Awards}}</td>
+                <td>{{user.list_Country}}</td>
+                <td>{{user.list_Director}}</td>
+                 <td>{{user.list_Genre}}</td>
+                <td>{{user.list_Language}}</td>
+                <td>{{user.list_Metascore}}</td>
+                <td>{{user.list_Plot}}</td>
+                
+                 
+                <td>{{user.list_Rated}}</td>
+                <td>{{user.list_Released}}</td>
+                <td>{{user.list_Runtime}}</td>
+                 <td>{{user.list_Title}}</td>
+                <td>{{user.list_Type}}</td>
+                <td>{{user.list_Writer}}</td>
+                <td>{{user.list_Year}}</td>
+                 <td>{{user.list_imdbID}}</td>
+                <td>{{user.list_imdbRating}}</td>
+                <td>{{user.list_imdbVotes}}</td>
+                
+                 
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>

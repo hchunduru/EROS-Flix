@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+
+      <!-- userId title -->
+      <form ng-submit="mainVar.submitWislist1()">
+
+        <div class="form-group">
+          <label for="userId">userId</label>
+          <input type="userId" required class="form-control" id="userId" placeholder="userId" ng-model="mainVar.newWish2.userId">
+        </div>
+
+
+
+
+        <button type="submit" class="btn btn-primary">Get All Wish List</button>
+
+      </form>
+    </div>
+
+    <div class="col-sm-6">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>userId</th>
+            <th>title</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in mainVar.wislist2">
+            <td>{{user.userId}}</td>
+            <td>{{user.title}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+
+      <!-- userId title -->
+      <form ng-submit="mainVar.submitWislist()">
+
+        <div class="form-group">
+          <label for="userId">userId</label>
+          <input type="userId" required class="form-control" id="userId" placeholder="userId" ng-model="mainVar.newWish.userId">
+        </div>
+        <div class="form-group">
+          <label for="title">title</label>
+          <input type="title" required class="form-control" id="title" placeholder="title" ng-model="mainVar.newWish.title">
+        </div>
+
+
+        <button type="submitWishList" class="btn btn-primary">Add WishList</button>
+
+
+      </form>
+    </div>
+
+    <div class="col-sm-6">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+
+
+            <th>Genre</th>
+
+            <th>Poster</th>
+
+            <th>Title</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in mainVar.movies | filter:mainVar.search | orderBy:'name'">
+
+
+            <td>{{user.list_Genre}}</td>
+
+
+            <td><img class="img-responsive" src="{{user.list_Poster}}"></td>
+
+            <td>{{user.list_Title}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
