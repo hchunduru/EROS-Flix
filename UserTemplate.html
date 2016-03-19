@@ -1,92 +1,141 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6" >
 
-      <!-- userId title -->
-      <form ng-submit="mainVar.submitWislist1()">
+
+      <form ng-submit="mainVar.submit()">
 
         <div class="form-group">
-          <label for="userId">userId</label>
-          <input type="userId" required class="form-control" id="userId" placeholder="userId" ng-model="mainVar.newWish2.userId">
+          <label for="fname">fname</label>
+          <input type="fname" required minlength="5" class="form-control" id="fname" placeholder="fname" ng-model="mainVar.newUser.fname">
+        </div>
+        <div class="form-group">
+          <label for="lname">lname</label>
+          <input type="lname" required class="form-control" id="lname" placeholder="lname" ng-model="mainVar.newUser.lname">
+        </div>
+        <div class="form-group">
+          <label for="email">email</label>
+          <input type="email" required class="form-control" id="email" placeholder="email" ng-model="mainVar.newUser.email">
+        </div>
+        <div class="form-group">
+          <label for="age">age</label>
+          <input type="age" required class="form-control" id="age" placeholder="age" ng-model="mainVar.newUser.age">
+        </div>
+        <div class="form-group">
+          <label for="password">password</label>
+          <input type="password" required class="form-control" id="password" placeholder="password" ng-model="mainVar.newUser.password">
         </div>
 
-
-
-
-        <button type="submit" class="btn btn-primary">Get All Wish List</button>
-
+        <button ng-if="!mainVar.update" type="submit" class="btn btn-primary">Sign up</button>
       </form>
     </div>
+    <div class="col-sm-6" >
 
-    <div class="col-sm-6">
+
+      <form ng-submit="mainVar.submitUserId()">
+
+
+        <div class="form-group">
+          <label for="id">id</label>
+          <input type="id" required class="form-control" id="id" placeholder="id" ng-model="mainVar.newUser1.id">
+        </div>
+
+        <div class="form-group">
+          <label for="password">password</label>
+          <input type="password" required class="form-control" id="password" placeholder="password" ng-model="mainVar.newUser1.password">
+        </div>
+
+        <button ng-if="!mainVar.update" type="submit" class="btn btn-primary">Sign in</button>
+      </form>
+
       <table class="table table-striped">
         <thead>
-          <tr>
-            <th>userId</th>
-            <th>title</th>
+        <tr>
 
-          </tr>
+          <th>fname</th>
+          <th>lname</th>
+          <th>Email</th>
+          <th>id</th>
+          <th>password</th>
+
+        </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="user in mainVar.wislist2">
-            <td>{{user.userId}}</td>
-            <td>{{user.title}}</td>
-          </tr>
+        <tr ng-repeat="user in mainVar.usersFiler | filter:mainVar.search | orderBy:'name'">
+          <td>{{user.fname}}</td>
+          <td>{{user.lname}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.id}}</td>
+          <td>{{user.password}}</td>
+
+        </tr>
         </tbody>
       </table>
     </div>
+
+
   </div>
   <div class="row">
-    <div class="col-sm-6">
-
-      <!-- userId title -->
-      <form ng-submit="mainVar.submitWislist()">
-
-        <div class="form-group">
-          <label for="userId">userId</label>
-          <input type="userId" required class="form-control" id="userId" placeholder="userId" ng-model="mainVar.newWish.userId">
-        </div>
-        <div class="form-group">
-          <label for="title">title</label>
-          <input type="title" required class="form-control" id="title" placeholder="title" ng-model="mainVar.newWish.title">
-        </div>
-
-
-        <button type="submitWishList" class="btn btn-primary">Add WishList</button>
-
-
-      </form>
-    </div>
-
-    <div class="col-sm-6">
+    <div class="col-sm-6" >
+      <input type="search" ng-model="mainVar.search" class="form-control" id="name" placeholder="Search">
       <table class="table table-striped">
         <thead>
-          <tr>
+        <tr>
 
+          <th>Add WishList</th>
+          <th>list_Actors</th>
+          <th>list_Awards</th>
+          <th>list_Country</th>
+          <th>list_Director</th>
+          <th>list_Genre</th>
+          <th>list_Language</th>
+          <th>list_Metascore</th>
+          <th>list_Plot</th>
+          <th>list_Poster</th>
+          <th>list_Rated</th>
+          <th>list_Released</th>
+          <th>list_Runtime</th>
+          <th>list_Title</th>
+          <th>list_Type</th>
+          <th>list_Writer</th>
+          <th>list_Year</th>
+          <th>list_imdbID</th>
+          <th>list_imdbRating</th>
+          <th>list_imdbVotes</th>
+          <th>list_UserOrderNum</th>
 
-            <th>Genre</th>
-
-            <th>Poster</th>
-
-            <th>Title</th>
-
-          </tr>
+        </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="user in mainVar.movies | filter:mainVar.search | orderBy:'name'">
+        <tr ng-repeat="user in mainVar.movies | filter:mainVar.search | orderBy:'name'">
+
+          <td><i ng-click="mainVar.edit(user.id,user)" class="glyphicon glyphicon-pencil"></i></td>
+          <td>{{user.list_Actors}}</td>
+          <td>{{user.list_Awards}}</td>
+          <td>{{user.list_Country}}</td>
+          <td>{{user.list_Director}}</td>
+          <td>{{user.list_Genre}}</td>
+          <td>{{user.list_Language}}</td>
+          <td>{{user.list_Metascore}}</td>
+          <td>{{user.list_Plot}}</td>
+
+          <td><img class="img-responsive" src="{{user.list_Poster}}"></td>
+          <td>{{user.list_Rated}}</td>
+          <td>{{user.list_Released}}</td>
+          <td>{{user.list_Runtime}}</td>
+          <td>{{user.list_Title}}</td>
+          <td>{{user.list_Type}}</td>
+          <td>{{user.list_Writer}}</td>
+          <td>{{user.list_Year}}</td>
+          <td>{{user.list_imdbID}}</td>
+          <td>{{user.list_imdbRating}}</td>
+          <td>{{user.list_imdbVotes}}</td>
+          <td>{{user.list_UserOrderNum}}</td>
 
 
-            <td>{{user.list_Genre}}</td>
-
-
-            <td><img class="img-responsive" src="{{user.list_Poster}}"></td>
-
-            <td>{{user.list_Title}}</td>
-
-          </tr>
+        </tr>
         </tbody>
       </table>
     </div>
   </div>
-
 </div>
